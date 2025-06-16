@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Instagram, Play, X, ChevronLeft, ChevronRight, Waves, Sparkles, Clock, Zap, Eye } from 'lucide-react';
 
-
 const artworks = [
   {
     id: 1,
@@ -603,18 +602,34 @@ function App() {
 )}
 
 {showPlayer && (
-  <div className="fixed bottom-6 left-6 z-50 bg-white rounded-xl shadow-xl p-2 max-w-xs">
+  <div
+    className="
+      fixed bottom-6 left-6 z-50 bg-white rounded-xl shadow-xl p-2 max-w-xs
+      sm:bottom-6 sm:left-6
+      xs:bottom-2 xs:left-2 xs:max-w-[90%] xs:p-1
+    "
+  >
     <button
-      className="absolute top-1 right-1 text-gray-600 hover:text-red-500"
+      className="
+        absolute top-1 right-1 text-gray-600 hover:text-red-500
+        xs:top-0.5 xs:right-0.5 xs:text-sm
+      "
       onClick={() => setShowPlayer(false)}
     >
       ✖
     </button>
+
     <blockquote
       className="tiktok-embed"
       cite="https://www.tiktok.com/@_scond_/video/7509650413591842104"
       data-video-id="7509650413591842104"
-      style={{width: '300px', height: '650px', overflow: 'hidden', borderRadius: '16px' }}
+      style={{
+        width: '%',
+        height: 'auto',
+        aspectRatio: '9 / 16', // Garante o formato de vídeo vertical em mobile
+        overflow: 'hidden',
+        borderRadius: '12px'
+      }}
     >
       <section>
         <a target="_blank" title="@_scond_" href="https://www.tiktok.com/@_scond_?refer=embed">@_scond_</a>
