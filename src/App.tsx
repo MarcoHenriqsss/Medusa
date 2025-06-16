@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Instagram, Play, X, ChevronLeft, ChevronRight, Waves, Sparkles, Clock, Zap, Eye } from 'lucide-react';
 
+
 const artworks = [
   {
     id: 1,
@@ -119,6 +120,8 @@ function App() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(true);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -128,6 +131,18 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+  const script = document.createElement('script');
+  script.src = 'https://www.tiktok.com/embed.js';
+  script.async = true;
+  document.body.appendChild(script);
+
+  return () => {
+    document.body.removeChild(script);
+  };
+}, []);
+
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index);
@@ -574,7 +589,46 @@ function App() {
         onNext={nextImage}
         onPrev={prevImage}
       />
-    </div>
+      
+    
+// [CÓDIGO ORIGINAL INCLUÍDO AQUI INALTERADO ACIMA DO RETURN]
+
+{!showPlayer && (
+  <button
+    className="fixed bottom-6 left-6 z-50 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full shadow-lg"
+    onClick={() => setShowPlayer(true)}
+  >
+    ▶ Ver vídeo
+  </button>
+)}
+
+{showPlayer && (
+  <div className="fixed bottom-6 left-6 z-50 bg-white rounded-xl shadow-xl p-2 max-w-xs">
+    <button
+      className="absolute top-1 right-1 text-gray-600 hover:text-red-500"
+      onClick={() => setShowPlayer(false)}
+    >
+      ✖
+    </button>
+    <blockquote
+      className="tiktok-embed"
+      cite="https://www.tiktok.com/@_scond_/video/7509650413591842104"
+      data-video-id="7509650413591842104"
+      style={{width: '300px', height: '650px', overflow: 'hidden', borderRadius: '16px' }}
+    >
+      <section>
+        <a target="_blank" title="@_scond_" href="https://www.tiktok.com/@_scond_?refer=embed">@_scond_</a>
+        oiiiiiiiii juro que mais la pra frente eu falo uma curiosidade legal!
+        <a title="pintura" target="_blank" href="https://www.tiktok.com/tag/pintura?refer=embed">#pintura</a>
+        <a title="aquarela" target="_blank" href="https://www.tiktok.com/tag/aquarela?refer=embed">#aquarela</a>
+        <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a>
+        <a title="fy" target="_blank" href="https://www.tiktok.com/tag/fy?refer=embed">#fy</a>
+        <a target="_blank" title="♬ som original - Ana Scond" href="https://www.tiktok.com/music/som-original-7509650428708375301?refer=embed">♬ som original - Ana Scond</a>
+      </section>
+    </blockquote>
+  </div>
+)}
+</div>
   );
 }
 
