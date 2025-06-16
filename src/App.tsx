@@ -604,43 +604,82 @@ function App() {
 {showPlayer && (
   <div
     className="
-      fixed bottom-6 left-6 z-50 bg-white rounded-xl shadow-xl p-2 max-w-xs
-      sm:bottom-6 sm:left-6
-      xs:bottom-2 xs:left-2 xs:max-w-[90%] xs:p-1
+      fixed bottom-4 left-4 z-50 bg-white rounded-xl shadow-xl p-2
     "
+    style={{
+      width: '235px', // 🔥 largura após aplicar o scale (300 * 0.7)
+      height: '385px', // 🔥 altura após aplicar o scale (550 * 0.7)
+    }}
   >
     <button
       className="
-        absolute top-1 right-1 text-gray-600 hover:text-red-500
-        xs:top-0.5 xs:right-0.5 xs:text-sm
+        absolute top-1 right-1 text-gray-600 hover:text-red-500 text-sm
       "
       onClick={() => setShowPlayer(false)}
     >
       ✖
     </button>
 
-    <blockquote
-      className="tiktok-embed"
-      cite="https://www.tiktok.com/@_scond_/video/7509650413591842104"
-      data-video-id="7509650413591842104"
+    <div
       style={{
-        width: '%',
-        height: 'auto',
-        aspectRatio: '9 / 16', // Garante o formato de vídeo vertical em mobile
-        overflow: 'hidden',
-        borderRadius: '12px'
+        transform: 'scale(0.45)', // 🔥 Aplica o scale para diminuir
+        transformOrigin: 'top left', // 🔥 Mantém o canto superior esquerdo fixo
+        width: '500px', // 🔥 largura real do player do TikTok
+        height: '550px', // 🔥 altura real do player
       }}
     >
-      <section>
-        <a target="_blank" title="@_scond_" href="https://www.tiktok.com/@_scond_?refer=embed">@_scond_</a>
-        oiiiiiiiii juro que mais la pra frente eu falo uma curiosidade legal!
-        <a title="pintura" target="_blank" href="https://www.tiktok.com/tag/pintura?refer=embed">#pintura</a>
-        <a title="aquarela" target="_blank" href="https://www.tiktok.com/tag/aquarela?refer=embed">#aquarela</a>
-        <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a>
-        <a title="fy" target="_blank" href="https://www.tiktok.com/tag/fy?refer=embed">#fy</a>
-        <a target="_blank" title="♬ som original - Ana Scond" href="https://www.tiktok.com/music/som-original-7509650428708375301?refer=embed">♬ som original - Ana Scond</a>
-      </section>
-    </blockquote>
+      <blockquote
+        className="tiktok-embed"
+        cite="https://www.tiktok.com/@_scond_/video/7509650413591842104"
+        data-video-id="7509650413591842104"
+      >
+        <section>
+          <a
+            target="_blank"
+            title="@_scond_"
+            href="https://www.tiktok.com/@_scond_?refer=embed"
+          >
+            @_scond_
+          </a>{' '}
+          oiiiiiiiii juro que mais la pra frente eu falo uma curiosidade legal!{' '}
+          <a
+            title="pintura"
+            target="_blank"
+            href="https://www.tiktok.com/tag/pintura?refer=embed"
+          >
+            #pintura
+          </a>{' '}
+          <a
+            title="aquarela"
+            target="_blank"
+            href="https://www.tiktok.com/tag/aquarela?refer=embed"
+          >
+            #aquarela
+          </a>{' '}
+          <a
+            title="fyp"
+            target="_blank"
+            href="https://www.tiktok.com/tag/fyp?refer=embed"
+          >
+            #fyp
+          </a>{' '}
+          <a
+            title="fy"
+            target="_blank"
+            href="https://www.tiktok.com/tag/fy?refer=embed"
+          >
+            #fy
+          </a>{' '}
+          <a
+            target="_blank"
+            title="♬ som original - Ana Scond"
+            href="https://www.tiktok.com/music/som-original-7509650428708375301?refer=embed"
+          >
+            ♬ som original - Ana Scond
+          </a>
+        </section>
+      </blockquote>
+    </div>
   </div>
 )}
 </div>
